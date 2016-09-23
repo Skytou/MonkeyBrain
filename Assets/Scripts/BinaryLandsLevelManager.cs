@@ -8,12 +8,10 @@ public class BinaryLandsLevelManager : MonoBehaviour
     public static BinaryLandsLevelManager instance = null;
     public GameObject BackGroundImg;
     public SpriteRenderer bgSpriteRenderer;
-    public GameObject player1, player2;
+    public GameObject monkey;
     public VirtualJoystick joystick;
     public float moveSpeed;
-    private float currentMovementValueX, currentMovementValueY;
-    private Rigidbody player_rb_1, player_rb_2;
-    private Animator player_1_Anim, player_2_Anim;
+    private Rigidbody monkeyRb;
     private Vector3 HorizontalMoveVector, VerticalMoveVector;
     public int gravityScale=1;
     public bool gravityUp;
@@ -31,9 +29,8 @@ public class BinaryLandsLevelManager : MonoBehaviour
     void Start()
     {
         //	ResizeBackGroundImage ();
-        player_rb_1 = player1.GetComponent<Rigidbody>();
-        player_rb_2 = player2.GetComponent<Rigidbody>();
-       //player_1_Anim = player1.GetComponent<Animator> ();
+        monkeyRb = monkey.GetComponent<Rigidbody>();
+        
 
     }
 
@@ -52,8 +49,8 @@ public class BinaryLandsLevelManager : MonoBehaviour
 
     void MovePlayer()
     {
-        player_rb_1.AddForce((HorizontalMoveVector * moveSpeed));
-        player_rb_2.AddForce((HorizontalMoveVector * -moveSpeed));
+        monkeyRb.AddForce((HorizontalMoveVector * moveSpeed));
+        //player_rb_2.AddForce((HorizontalMoveVector * -moveSpeed));
 
         //player_rb_1.AddForce ((VerticalMoveVector * moveSpeed));
         //player_rb_2.AddForce((VerticalMoveVector * moveSpeed));
@@ -193,19 +190,19 @@ public class BinaryLandsLevelManager : MonoBehaviour
     {
         if(gravityDown)
         {
-            player_rb_1.AddForce(0, 0, -moveSpeed);
+            monkeyRb.AddForce(0, 0, -moveSpeed);
         }
         if(gravityLeft)
         {
-            player_rb_1.AddForce(-moveSpeed, 0,0);
+            monkeyRb.AddForce(-moveSpeed, 0,0);
         }
         if(gravityUp)
         {
-            player_rb_1.AddForce(0, 0, moveSpeed);
+            monkeyRb.AddForce(0, 0, moveSpeed);
         }
         if(gravityRight)
         {
-            player_rb_1.AddForce(moveSpeed, 0, 0);
+            monkeyRb.AddForce(moveSpeed, 0, 0);
         }
     }
 }
