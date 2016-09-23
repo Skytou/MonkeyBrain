@@ -18,6 +18,7 @@ public class GravityGameManager : MonoBehaviour
     public bool gravityDown;
     public bool gravityLeft;
     public bool gravityRight;
+    public bool TesttingMode;
 
 
 
@@ -51,8 +52,10 @@ public class GravityGameManager : MonoBehaviour
     {
         monkeyRb.AddForce((HorizontalMoveVector * moveSpeed));
         //player_rb_2.AddForce((HorizontalMoveVector * -moveSpeed));
-
-        monkeyRb.AddForce ((VerticalMoveVector * moveSpeed));
+        if (TesttingMode)
+        {
+            monkeyRb.AddForce((VerticalMoveVector * moveSpeed));
+        }
         //player_rb_2.AddForce((VerticalMoveVector * moveSpeed));
         //		if (CrossPlatformInputManager.GetAxis ("Horizontal") > 0)
         //		{
@@ -110,13 +113,7 @@ public class GravityGameManager : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Brick")
-        {
-            Debug.Log("LevelComplete");
-        }
-    }
+    
 
 
     void ResizeBackGroundImage()
