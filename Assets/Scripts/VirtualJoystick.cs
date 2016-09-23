@@ -31,7 +31,7 @@ public  class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, 
 
 			joystrickImage.rectTransform.anchoredPosition = new Vector3(inputVector.x*(bgImage.rectTransform.sizeDelta.x/3),
 				inputVector.z*(bgImage.rectTransform.sizeDelta.y/3));
-			Debug.Log (inputVector);
+
 		}
 	}
 

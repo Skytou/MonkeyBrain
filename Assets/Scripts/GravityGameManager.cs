@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class BinaryLandsLevelManager : MonoBehaviour
+public class GravityGameManager : MonoBehaviour
 
 {
-    public static BinaryLandsLevelManager instance = null;
+    public static GravityGameManager instance = null;
     public GameObject BackGroundImg;
     public SpriteRenderer bgSpriteRenderer;
     public GameObject monkey;
@@ -37,10 +37,10 @@ public class BinaryLandsLevelManager : MonoBehaviour
     void Update()
     {
         HorizontalMoveVector = HorizontalInput();
-        //VerticalMoveVector = VerticalInput ();
+        VerticalMoveVector = VerticalInput ();
         MovePlayer();
         GravityChange();
-        Debug.Log(gravityScale);
+
 
 
 
@@ -52,7 +52,7 @@ public class BinaryLandsLevelManager : MonoBehaviour
         monkeyRb.AddForce((HorizontalMoveVector * moveSpeed));
         //player_rb_2.AddForce((HorizontalMoveVector * -moveSpeed));
 
-        //player_rb_1.AddForce ((VerticalMoveVector * moveSpeed));
+        monkeyRb.AddForce ((VerticalMoveVector * moveSpeed));
         //player_rb_2.AddForce((VerticalMoveVector * moveSpeed));
         //		if (CrossPlatformInputManager.GetAxis ("Horizontal") > 0)
         //		{
@@ -112,9 +112,9 @@ public class BinaryLandsLevelManager : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Border")
+        if (col.gameObject.tag == "Brick")
         {
-
+            Debug.Log("LevelComplete");
         }
     }
 
@@ -180,7 +180,7 @@ public class BinaryLandsLevelManager : MonoBehaviour
 
 
         }
-        if(gravityScale>3)
+        if (gravityScale > 3)
         {
             gravityScale = 0;
         }
