@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Gravity2DTest : MonoBehaviour {
     Rigidbody2D monkeyRb;
@@ -9,6 +10,7 @@ public class Gravity2DTest : MonoBehaviour {
     public bool gravityLeft;
     public bool gravityRight;
     public float moveSpeed;
+    public Image gravity_Dir;
     // Use this for initialization
     void Start ()
     {
@@ -31,6 +33,7 @@ public class Gravity2DTest : MonoBehaviour {
                 gravityLeft = false;
                 gravityRight = false;
                 gravityUp = false;
+                gravity_Dir.transform.Rotate(0, 0, 90);
 
                 break;
             case 2:
