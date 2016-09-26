@@ -202,4 +202,9 @@ public class GravityGameManager : MonoBehaviour
             monkeyRb.AddForce(moveSpeed, 0, 0);
         }
     }
+
+    public void Restart()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
 }
