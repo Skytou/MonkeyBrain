@@ -33,13 +33,13 @@ public class GravityGameManager : MonoBehaviour
         instance = this;
     }
 
+
     void Start()
     {
-        //	ResizeBackGroundImage ();
-        monkeyRb = monkey.GetComponent<Rigidbody>();
         
-
+        monkeyRb = monkey.GetComponent<Rigidbody>();
     }
+
 
     void Update()
     {
@@ -47,48 +47,18 @@ public class GravityGameManager : MonoBehaviour
         VerticalMoveVector = VerticalInput ();
         MovePlayer();
         GravityChange();
-
-
-
-
     }
 
 
     void MovePlayer()
     {
         monkeyRb.AddForce((HorizontalMoveVector * moveSpeed));
-        //player_rb_2.AddForce((HorizontalMoveVector * -moveSpeed));
+        
         if (TesttingMode)
         {
             monkeyRb.AddForce((VerticalMoveVector * moveSpeed));
         }
-        //player_rb_2.AddForce((VerticalMoveVector * moveSpeed));
-        //		if (CrossPlatformInputManager.GetAxis ("Horizontal") > 0)
-        //		{
-        //			player_rb_1.AddForce (moveSpeed, 0, 0);
-        //			player_rb_2.AddForce (-moveSpeed, 0, 0);
-        //		}
-        //			
-        //	
-        //		if (CrossPlatformInputManager.GetAxis ("Horizontal") < 0)
-        //		{
-        //			player_rb_1.AddForce (-moveSpeed,0,0);
-        //			player_rb_2.AddForce (moveSpeed,0,0);
-        //		}
-        //
-        //
-        //		if (CrossPlatformInputManager.GetAxis ("Vertical") > 0)
-        //		{
-        //			player_rb_1.AddForce (0, 0, moveSpeed);
-        //			player_rb_2.AddForce (0, 0, moveSpeed);
-        //		}
-        //
-        //
-        //		if (CrossPlatformInputManager.GetAxis ("Vertical") < 0) 
-        //		{
-        //			player_rb_1.AddForce (0, 0, -moveSpeed);
-        //			player_rb_2.AddForce (0, 0, -moveSpeed);
-        //		}
+       
     }
 
 
@@ -97,7 +67,7 @@ public class GravityGameManager : MonoBehaviour
         Vector3 dir = Vector3.zero;
 
         dir.x = joystick.Horizontal();
-        //dir.z = joystick.Vertical ();
+        
 
         if (dir.magnitude > 1)
             dir.Normalize();
@@ -105,11 +75,12 @@ public class GravityGameManager : MonoBehaviour
         return dir;
     }
 
+
     private Vector3 VerticalInput()
     {
         Vector3 dir = Vector3.zero;
 
-        //dir.x = joystick.Horizontal ();
+       
         dir.z = joystick.Vertical();
 
         if (dir.magnitude > 1)
@@ -118,32 +89,6 @@ public class GravityGameManager : MonoBehaviour
         return dir;
     }
 
-
-    
-
-
-    void ResizeBackGroundImage()
-    {
-        if (bgSpriteRenderer == null) return;
-
-        transform.localScale = new Vector3(1, 1, 1);
-
-        float width = bgSpriteRenderer.sprite.bounds.size.x;
-        float height = bgSpriteRenderer.sprite.bounds.size.y;
-
-
-        float worldScreenHeight = Camera.main.orthographicSize * 2f;
-        float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
-
-        Vector3 xWidth = BackGroundImg.transform.localScale;
-        xWidth.x = worldScreenWidth / width;
-        BackGroundImg.transform.localScale = xWidth;
-        //transform.localScale.x = worldScreenWidth / width;
-        Vector3 yHeight = BackGroundImg.transform.localScale;
-        yHeight.y = worldScreenHeight / height;
-        BackGroundImg.transform.localScale = yHeight;
-        //transform.localScale.y = worldScreenHeight / height;
-    }
 
     public void Gravity()
     {
@@ -204,6 +149,7 @@ public class GravityGameManager : MonoBehaviour
 
     }
 
+
     public void GravityChange()
     {
         if(gravityDown)
@@ -228,6 +174,7 @@ public class GravityGameManager : MonoBehaviour
             
         }
     }
+
 
     public void Restart()
     {
